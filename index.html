@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Madeleine</title>
+  <link rel="icon" href="favicon.ico">
+
+  <style>
+    body,
+    html {
+      background: #DBDBDB;
+      background: #6A6A6A;
+      background: #FFBAFB;
+      color: #660D30;
+      padding: 0;
+      margin: 0;
+    }
+
+    #header {
+      background: white;
+    }
+
+    article {
+      display: flex;
+      width: 100%;
+      justify-content: left;
+      align-items: center;
+    }
+
+    aside {
+      display: flex;
+      width: 500px;
+      justify-content: right;
+
+    }
+
+    article textarea {
+      width: 500px;
+      height: 200px;
+      justify-content: left;
+      margin: 20px 20px;
+      font-family: Monospace, monospace;
+      font-size: 1rem;
+      color: #660D30;
+      /*background-color: rgba(20, 2, 20, 0.15);*/
+      background-color: #FFFFFF91;
+      border: 0;
+      padding: 1rem;
+    }
+
+    #profile iframe {
+      width: 480px;
+      height: 363px;
+    }
+
+    #session iframe {
+      width: 255px;
+      height: 302.2px;
+    }
+
+  </style>
+
+  <script type="text/javascript">
+      function resize() {
+          this.style.height = this.contentWindow.document.body.scrollHeight + 'px';
+          this.style.width = this.contentWindow.document.body.scrollWidth + 'px';
+          console.log("RESIZE", this);
+      }
+
+
+      document.addEventListener('DOMContentLoaded', function () {
+          var iframe = document.getElementsByTagName("iframe");
+          for (var i = iframe.length - 1; i >= 0; i--) {
+              iframe[i].onload = resize;
+          }
+
+          var domparser = new DOMParser();
+
+          var textcode = document.getElementsByTagName("textarea");
+          textcode[0].onkeyup = function () {
+              // console.debug(this.value);
+              var code = domparser.parseFromString(this.value, 'text/html');
+              var elem = code.getElementsByTagName("iframe");
+              if (elem.length > 0) {
+                  if (iframe[0].src !== elem[0].src) iframe[0].src = elem[0].src;
+              }
+          }
+
+      }, false);
+
+  </script>
+</head>
+
+<body>
+
+<!--<div id="header">-->
+<!--  <label> Friend Link:-->
+<!--    <input type="text"/>-->
+<!--  </label>-->
+<!--  <br>-->
+<!--  <label> Requirement Link:-->
+<!--    <input type="text"/>-->
+<!--  </label>-->
+<!--</div>-->
+
+<article id="profile">
+  <aside>
+    <iframe width="100%" height="400px" src="profile.html?f=0k8o7&r=jwmup" frameborder="0"></iframe>
+  </aside>
+  <textarea><iframe width="100%" height="400px" src="https://lilymia.github.io/EmlaLock-Profile/profile.html?f=0k8o7&r=jwmup" frameborder="0"></iframe></textarea>
+</article>
+
+<article id="session">
+  <aside>
+    <iframe width="100%" height="350px" src="session.html?f=0k8o7&r=jwmup" frameborder="0"></iframe>
+  </aside>
+  <textarea><iframe width="100%" height="400px" src="https://lilymia.github.io/EmlaLock-Profile/profile.html?f=0k8o7&r=jwmup" frameborder="0"></iframe></textarea>
+</article>
+
+</body>
+
+</html>
