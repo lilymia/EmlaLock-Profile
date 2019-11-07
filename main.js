@@ -59,8 +59,8 @@ function parse() {
            console.log(value, key);
         });
 
-        el.classList.add(border);
-        console.log(border);
+        el.classList.add("border-" + border);
+        // console.log(border);
 
         // banner.
         // for (el in banner) {
