@@ -12,12 +12,17 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151759590-1"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    gtag('config', 'UA-151759590-1');
-    gtag('set', {'user_id': 'USER_ID'}); // Set the user ID using signed-in user_id.
+      gtag('config', 'UA-151759590-1', {
+          'custom_map': {'metric1': 'timestamp'}
+      });
+      gtag('set', {'user_id': 'USER_ID'}); // Set the user ID using signed-in user_id.
+
+      var metric_value = (new Date()).getTime();
+      gtag('event', 'ping', {'timestamp': metric_value});
   </script>
 
 </head>
